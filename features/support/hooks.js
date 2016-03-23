@@ -1,26 +1,19 @@
 var myHooks = function () {
-  //   var first = true;
-  // this.Before(function (scenario) {
-  //   if(first){
-  //       browser.url('http://localhost:8080/');
-  //       first = false;
-  //   }    
-  //   browser.timeoutsImplicitWait(5000).then(function(){
-  //       browser.isExisting('#login-button',function(isExisting){
-  //           if(isExisting){
-  //               browser.click('#login-button');             
-  //           }
-  //       })
-  //   });
-  //   browser.url('http://localhost:8080/');
-  //   browser.waitForExist('#login-button',10000).then(function(){
-  //       browser.isExisting('#login-button',function(isExisting){
-  //           if(isExisting){
-  //               browser.click('#login-button');             
-  //           }
-  //       })
-  //   })            
-  // });
+  var login = true;
+  this.Before(function (scenario) {    
+    
+    if(login){
+      browser.url('http://localhost:8080/');    
+      browser.waitForExist('#login-button');
+      browser.click('#login-button');      
+      login = false;
+    }
+
+    // var logo = browser.isExisting('img[alt="中華電信"]');  
+    // if(!logo){
+    //   browser.url('http://localhost:8080/');    
+    // }           
+  });
 };
 
 module.exports = myHooks;
